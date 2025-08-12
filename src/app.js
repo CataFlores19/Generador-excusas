@@ -1,35 +1,30 @@
-import "bootstrap";
-import "./style.css";
 
+//pronombres
+let pronoum =["el", "la", "los", "las"];
+//adjetivos
+let adj = ["gran", "pequeño", "rápido", "lento"];
+//sustantivos
+let noun = ["perro", "gato", "ratón", "elefante", "peces"];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+//extensiones
+let extensions = [".com", ".net", ".org", ".info", ".es"];
 
-
-function generateExcuses() {
-
-  //Arrays de excusas disponibles
-  let who = ["Mi perro", "Mi gato", "Mi hámster", "Mi pez dorado", "Mi loro"];
-  let action = ["comió", "rompió", "perdió", "destruyó", "aplastó"];
-  let what = ["mi tarea", "mi proyecto", "mis notas", "mi presentación", "mi portátil"];
-  let when = ["antes de clase", "anoche", "esta mañana", "ayer", "justo ahora"];
-
-  //Generar números aleatorios para seleccionar elementos de cada array de excusas
-  let whoNumber = Math.floor(Math.random() * who.length);
-  let actionNumber = Math.floor(Math.random() * action.length);
-  let whatNumber = Math.floor(Math.random() * what.length);
-  let whenNumber = Math.floor(Math.random() * when.length);
-
-  //Seleccionar un elemento de cada array de excusas en base a los números aleatorios generados
-  let whoWord = who[whoNumber];
-  let actionWord = action[actionNumber];
-  let whatWord = what[whatNumber];
-  let whenWord = when[whenNumber];
-
-  return whoWord + " " + actionWord + " " + whatWord + " " + whenWord;
-
+for (let p of pronoum) {
+  for (let a of adj){
+    for (let n of noun){
+      for (let e of extensions){
+        console.log(p + a + n + e);
+    
+        // domain hack si el nombre termina con la extension sin el punto reemplaza la extension por esas letras
+        if (n.endsWith(e.slice(1))) {
+          let nombreSinExtension = n.slice(0, -e.slice(1).length);
+          console.log("Domain hack: " + p + a + nombreSinExtension + e);
+        }
+      }
+    }
+  }
 }
 
-window.onload = function() {
-  document.getElementById("excuse").innerHTML = generateExcuses();
-};
+
+
+
